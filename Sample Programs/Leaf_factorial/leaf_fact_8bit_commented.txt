@@ -1,0 +1,46 @@
+-string x Factorial_of:      #start of .data section
+-string y Answer:
+-string z The_Answer_is_1
+-int n 00000101       # n = 5    # n CANNOT be > 5 #  but n can be 0
+printstr x        #start of .text section
+la n         #load address of n into $acc
+jrra 010     # put the integer at address n into $acc  ($acc now = 5)
+jrra 100     # print out $acc  (prints out 5)
+move $r3     #move the integer in the $acc into $r3.  $r3 now = 5
+addi $0 $r2 00100001   #beq setup
+move $r2 
+beq $r3 $0 00 $r2       #if n=0 jump to the very end and print string z there 
+addi $0 00000001
+move $r0              #initiate $r0 =1
+move $r1               #        $r1 =1
+sw $r3 $sp 00000000    #store $r3 in top of stack
+lw $r3 $sp 00000000    #get original $r3 back  #FACT start (jump back here)
+slt $r0 $r3               #check if $r0<$3
+move $r2                 #put result in $r2
+addi $0 00010001             
+move $r3                #beq setup
+beq $0 $r2 00 $r3    #if $r0 is not less than $r3 then branch to DONE
+addi $r0 00000001      #$r0 ++
+move $r0               #move to $r0
+move $r2               #hold in $r2  
+addi $0 00000100     #addi $0 4   puts 4 on the $acc
+move $r3              #beq setup  
+addi $r1 11111111    #$r1 = $r1 -1  #MULT start (jump back here)
+move $r1                 
+beq $0 $r1 00 $r3     #if $r1=0 get out of mult loop to right after jal MULT
+add $r0 $r2            #add $r0 to its orginal value (kept in $r2)
+move $r0               #$r0's new value 
+jal 280                    #repeat this addition to accomplish multiplication of $r0 x $r1
+add $r0 $0           #gets out of mult loop here 
+move $r1              #store result in $r1 
+add $r2 $0            
+move $r0                  #get original $r0 back
+jal 269                   #do it all agian (jump back to start of FACT)
+printstr y  #DONE , print str y
+add $r1 $0      # put the end result on the $acc
+jrra 100        #print it out
+jrra 101       #print out the registers
+jrra 000   #exit syscall
+printstr z      #if n in data is 0, this just prints out The_Answer_is_0
+jrra 000        #exit syscall
+eof             #eof for assembler to see

@@ -1,0 +1,46 @@
+-string x Factorial_of:
+-string y Answer:
+-string z The_Answer_is_1
+-int n 00000101       
+printstr x
+la n         
+jrra 010     
+jrra 100     
+move $r3     
+addi $r2 00100001
+move $r2 
+beq $r3 $0 00 $r2 
+addi $0 00000001
+move $r0              
+move $r1               
+sw $r3 $sp 00000000    
+lw $r3 $sp 00000000     
+slt $r0 $r3    
+move $r2
+addi $0 00010001
+move $r3
+beq $0 $r2 00 $r3    
+addi $r0 00000001      
+move $r0 
+move $r2
+addi $0 00000100     
+move $r3              
+addi $r1 11111111    
+move $r1
+beq $0 $r1 00 $r3     
+add $r0 $r2            
+move $r0
+jal 280
+add $r0 $0           
+move $r1
+add $r2 $0 
+move $r0
+jal 269
+printstr y  
+add $r1 $0
+jrra 100
+jrra 101
+jrra 000   
+printstr z
+jrra 000
+eof

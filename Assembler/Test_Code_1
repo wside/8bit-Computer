@@ -1,0 +1,18 @@
+-string x HelloWorld
+-int y 11111101
+Add $r0 $r1
+Nand $0 $r1
+Slt $r1 $0
+Move $ra8
+Srl 3
+Jrra $r1
+Jrra 001
+Jal 200
+Sw $r2 $sp 00101
+Addi $r3 10011010
+Lw $r1 $sp 00001
+Beq $r1 $r2 01 $r3
+printstr x
+printint y
+la y
+eof

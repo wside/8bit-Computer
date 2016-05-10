@@ -1,0 +1,6 @@
+@100               //line = read_PC_controlable     //the .text section begins right below at  line 100 (hex)        
+0011011111101000   //100     addi $0 55   (put 55 = 0x37 in the Acc)                 
+xxxxxxxx11000100   //101     move $r0     ($r0 = 55) 
+0110010011101000   //102     addi $0 100  (put 100 = 0x64 in the Acc) 
+xxxxxxxx11000101   //103     move $r1     ($r1 = 100) 
+0000100111011001   //10F     jal 0x109     (jump and link to line 109) 
