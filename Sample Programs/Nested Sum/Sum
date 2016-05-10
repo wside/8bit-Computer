@@ -1,0 +1,45 @@
+-string x Sum_of:
+-string y Answer:
+-string z The_Answer_is_0
+-int n 00000101
+printstr x
+la n
+jrra 010
+jrra 100
+move $r3
+addi $0 00011111
+move $r2
+beq $r3 $0 00 $r2
+jal 271
+printstr y
+add $0 $r0
+jrra 100
+jrra 000
+addi $sp 11111110
+move $sp
+sw $r3 $sp 00001
+sw $ra8 $sp 00000
+jrra 110
+addi $0 00000001
+move $r1
+slt $r1 $r3
+move $r0
+addi $0 00000100
+move $r2
+beq $r1 $r0 00 $r2
+add $0 $0
+move $r0
+jrra $ra8
+addi $r3 11111111
+move $r3
+jal 271
+lw $r3 $sp 00001
+lw $ra8 $sp 00000
+addi $sp 00000010
+move $sp
+add $r3 $r0
+move $r0
+jrra $ra8
+printstr z
+jrra 000
+eof
