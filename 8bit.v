@@ -1,4 +1,4 @@
-// Matt Ferraria, Wendy Ide, Izzie Rong
+// Matt Ferraria, Wendy Ide
 // May 9, 216
 //This is the 8bit computer parent module. All child modules on same level.
 // ECE-151 Computer Archetecture, Professor Marano
