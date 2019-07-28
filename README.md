@@ -1,5 +1,5 @@
 # 8bit-Computer
-* original ISA (see [documentation](https://github.com/wside/8bit-Computer/blob/master/Documentation/Documentation.pdf))   
+* original ISA design (see [documentation](https://github.com/wside/8bit-Computer/blob/master/Documentation/Documentation.pdf)) 
 * original assembler  
 #    
 * can write simple programs based on ISA and assembler  
